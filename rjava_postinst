@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+case "$1" in
+
+   configure)
+
+      /usr/bin/R CMD javareconf 
+
+   ;;
+
+   abort-upgrade|abort-remove|abort-deconfigure)
+
+      echo "$1"
+
+    ;;
+
+   *)
+
+      echo "postinst called with unknown argument \`\$1'" >&2
+
+      exit 0
+
+   ;;
+
+esac
