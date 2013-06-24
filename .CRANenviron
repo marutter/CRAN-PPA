@@ -1,1 +1,4 @@
-/home/mrutter/.CRANenviron
+# Set list of supported Ubuntu releases for R binary CRAN packages
+export CRANRELEASE="lucid precise quantal raring"
+export CRANPACKAGES="boot mass class cluster codetools foreign kernsmooth lattice matrix nlme mgcv nnet survival rpart spatial rodbc littler rpy"
+
