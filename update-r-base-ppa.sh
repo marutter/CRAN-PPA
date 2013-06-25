@@ -9,6 +9,7 @@
 
 ChrootDir=/home/chroot
 BuildDir=/usr/local/src/ppa
+ScriptDir=/home/mrutter/R/PPA
 
 dist=""
 
@@ -23,16 +24,16 @@ Options:
                         defaults to the value of the environment variable 
                         CRANRELEASE
 
-The file ~/.CRANenviron is sourced to possibly define the environment
+The file .CRANenviron is sourced to possibly define the environment
 variable CRANRELEASE.
 
 Usage of the -r flag is required if, and only if, the -n flag is used
 and 'releases' is not empty.
 "
 
-if [ -e ${HOME}/.CRANenviron ]
+if [ -e ${ScriptDir}/.CRANenviron ]
 then
-    . ${HOME}/.CRANenviron
+    . ${ScriptDir}/.CRANenviron
 fi
 
 # If the environment variable CRANRELEASE exists, use it to define the

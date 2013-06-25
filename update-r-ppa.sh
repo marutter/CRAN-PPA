@@ -9,6 +9,7 @@
 
 ChrootDir=/home/chroot
 BuildDir=/usr/local/src/ppa
+ScriptDir=/home/mrutter/R/PPA
 
 packages=""
 dist=""
@@ -29,13 +30,13 @@ Options:
                         CRANRELEASE
   -n, --number		release number of the package (default 0)
 
-The file ~/.CRANenviron is sourced to possibly define the environment
+The file .CRANenviron is sourced to possibly define the environment
 variables CRANRELEASE and CRANPACKAGES. 
 "
 
-if [ -e ${HOME}/.CRANenviron ]
+if [ -e ${ScriptDir}/.CRANenviron ]
 then
-    . ${HOME}/.CRANenviron
+    . ${ScriptDir}/.CRANenviron
 fi
 
 # No arguments given. If the environment variables exist, use these
