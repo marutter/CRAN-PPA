@@ -1,0 +1,19 @@
+buildlog_ubuntu-bionic-amd64.r-cran-bradleyterry2_1.0-8-1ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-bradleyterry2-dummy : Depends: r-cran-brglm but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-caret_6.0-78+dfsg1-1ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-caret-dummy : Depends: r-cran-bradleyterry2 but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-conting_1.6-2ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-conting-dummy : Depends: r-cran-bms but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-conting_1.6-2ubuntu1_BUILDING.txt:                                             Depends: r-cran-tseries but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-dbitest_1.5-2-1ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-dbitest-dummy : Depends: r-cran-desc but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-diagnosismed_0.2.3-5ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-diagnosismed-dummy : Depends: r-cran-epicalc but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-diagnosismed_0.2.3-5ubuntu1_BUILDING.txt:                                                  Depends: r-cran-epitools but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-diagnosismed_0.2.3-5ubuntu1_BUILDING.txt:                                                  Depends: r-cran-amore but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-epi_2.19-3ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-epi-dummy : Depends: r-cran-cmprsk but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-epi_2.19-3ubuntu1_BUILDING.txt:                                         Depends: r-cran-etm but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-epir_0.9-93-1ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-epir-dummy : Depends: r-cran-biasedurn but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-factominer_1.39-1ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-factominer-dummy : Depends: r-cran-flashclust but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-fitcoach_1.0-2ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-fitcoach-dummy : Depends: r-cran-caret but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-fitcoach_1.0-2ubuntu1_BUILDING.txt:                                              Depends: r-cran-gbm but it is not going to be installed
+buildlog_ubuntu-bionic-amd64.r-cran-genabel_1.8-0-2ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-genabel-dummy : Depends: r-cran-genabel.data but it is not going to be installed
+buildlog_ubuntu-bionic-i386.r-cran-caret_6.0-78+dfsg1-1ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-caret-dummy : Depends: r-cran-bradleyterry2 but it is not going to be installed
+buildlog_ubuntu-bionic-i386.r-cran-epi_2.19-3ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-epi-dummy : Depends: r-cran-cmprsk but it is not going to be installed
+buildlog_ubuntu-bionic-i386.r-cran-epi_2.19-3ubuntu1_BUILDING.txt:                                         Depends: r-cran-etm but it is not going to be installed
+buildlog_ubuntu-bionic-i386.r-cran-genabel_1.8-0-2ubuntu1_BUILDING.txt: sbuild-build-depends-r-cran-genabel-dummy : Depends: r-cran-genabel.data but it is not going to be installed

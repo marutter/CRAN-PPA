@@ -1,0 +1,33 @@
+Format: 1.8
+Date: Sun, 18 Nov 2018 13:11:14 -0500
+Source: ess
+Binary: elpa-ess ess
+Architecture: source
+Version: 18.10.2-1ubuntu1
+Distribution: UNRELEASED
+Urgency: medium
+Maintainer: Dirk Eddelbuettel <edd@debian.org>
+Changed-By: Michael Rutter <marutter@gmail.com>
+Description:
+ elpa-ess   - Emacs mode for statistical programming and data analysis
+ ess        - Transition Package, ess to elpa-ess
+Changes:
+ ess (18.10.2-1ubuntu1) UNRELEASED; urgency=medium
+ .
+   * Removed dependency on dh-elpa
+   * Removed debhelper version number dependency
+Checksums-Sha1:
+ eb903b01092c52ef5b7967b612798f77be75bf00 1139 ess_18.10.2-1ubuntu1.dsc
+ 7fbb11d5d914f7908960d281af304d54c3dbb34e 2939425 ess_18.10.2.orig.tar.gz
+ b9822392db7b252d964861644f639999f85305c6 11952 ess_18.10.2-1ubuntu1.debian.tar.xz
+ 7ed0423556bea63f9455409c50c5c5f6347c9402 5126 ess_18.10.2-1ubuntu1_source.buildinfo
+Checksums-Sha256:
+ f6f74072cfca72b4c6346e13e21649c42530648c148f589ccd2aa435934ed72d 1139 ess_18.10.2-1ubuntu1.dsc
+ f77b42283c698da091aabca9ccd14a648c3240f00898b93128490feefa04e9d6 2939425 ess_18.10.2.orig.tar.gz
+ d7714bbdfb0f061e2efa46996978ef69d86f3dbec300068cd4c0ab1b2e41100a 11952 ess_18.10.2-1ubuntu1.debian.tar.xz
+ b10160c7c524078c37be94ff8f89ac9ef6f931fe08ddae49186d2ffca1445a9a 5126 ess_18.10.2-1ubuntu1_source.buildinfo
+Files:
+ 906143d1b2f90ac5ab8d86f97e3793db 1139 gnu-r optional ess_18.10.2-1ubuntu1.dsc
+ 5cc3cb67fbaaeb506e00100640674056 2939425 gnu-r optional ess_18.10.2.orig.tar.gz
+ 1015b58fb286bbdaa8671176174d40a0 11952 gnu-r optional ess_18.10.2-1ubuntu1.debian.tar.xz
+ 571a97641e23a695fef13b5a43568114 5126 gnu-r optional ess_18.10.2-1ubuntu1_source.buildinfo

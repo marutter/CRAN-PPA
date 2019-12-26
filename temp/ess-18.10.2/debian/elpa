@@ -1,0 +1,3 @@
+lisp/*.el
+debian/debian-autoloads.el
+etc

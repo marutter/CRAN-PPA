@@ -1,0 +1,35 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ ess (17.11-4) unstable; urgency=medium
+ .
+   [David Bremner]
+   * experimental conversion to dh_elpa
+ .
+   [Dirk Eddelbuettel]
+   * Applied David's patch, further tweaks
+Author: Dirk Eddelbuettel <edd@debian.org>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2018-08-18
+
+--- ess-17.11.orig/lisp/ess-pkg.el
++++ ess-17.11/lisp/ess-pkg.el
+@@ -1,2 +1,2 @@
+-(define-package "ess" "0" "Emacs Speaks Statistics" '((julia-mode "0.3"))
++(define-package "ess" "17.11" "Emacs Speaks Statistics" nil
+   :url "http://ess.r-project.org" :keywords nil)

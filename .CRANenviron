@@ -1,4 +1,4 @@
 # Set list of supported Ubuntu releases for R binary CRAN packages
-export CRANRELEASE="lucid precise quantal raring"
-export CRANPACKAGES="boot mass class cluster codetools foreign kernsmooth lattice matrix nlme mgcv nnet survival rpart spatial rodbc littler rpy"
+export CRANRELEASE="trusty xenial bionic disco eoan" 
+export CRANPACKAGES="boot mass class cluster codetools foreign kernsmooth lattice matrix nlme mgcv nnet survival rpart spatial rodbc littler rpy2 ess"
 

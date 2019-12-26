@@ -95,7 +95,7 @@ for i in ${dist}; do
     if [ $? -eq 0 ]; then
 	echo "update-r-base.sh: build successful for ${i}, updating ppa"
 	cd ${ChrootDir}/${i}${BuildDir}/
-	sudo dput ppa:marutter/rrutter ./*r-base*_source.changes
+	sudo dput ppa:marutter/rrutter3.5 ./*r-base*_source.changes
     else
 	echo "update-r-ppa.sh: build of one or more packages failed for ${i}"
 	exit 1

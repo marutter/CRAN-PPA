@@ -1,0 +1,222 @@
+https://launchpad.net/~marutter/+archive/ubuntu/c2d4u3.5/+build/14842067
+RUN: /usr/share/launchpad-buildd/slavebin/slave-prep 
+Forking launchpad-buildd slave process...
+Kernel version: Linux lcy01-amd64-026 4.4.0-122-generic #146-Ubuntu SMP Mon Apr 23 15:34:04 UTC 2018 x86_64
+Buildd toolchain package versions: launchpad-buildd_161 python-lpbuildd_161 sbuild_0.67.0-2ubuntu7.1 bzr-builder_0.7.3+bzr174~ppa13~ubuntu14.10.1 bzr_2.7.0-2ubuntu3.1 git-build-recipe_0.3.4~git201611291343.dcee459~ubuntu16.04.1 git_1:2.7.4-0ubuntu1.3 dpkg-dev_1.18.4ubuntu1.4 python-debian_0.1.27ubuntu2.
+Syncing the system clock with the buildd NTP service...
+ 5 May 19:18:42 ntpdate[1808]: adjust time server 10.211.37.1 offset -0.022006 sec
+RUN: /usr/share/launchpad-buildd/slavebin/in-target unpack-chroot --backend=chroot --series=bionic --arch=amd64 PACKAGEBUILD-14842067 /home/buildd/filecache-default/b7d07d6b68ae68badf26a018a3a0291d50e41e42
+Creating target for build PACKAGEBUILD-14842067
+RUN: /usr/share/launchpad-buildd/slavebin/in-target mount-chroot --backend=chroot --series=bionic --arch=amd64 PACKAGEBUILD-14842067
+Starting target for build PACKAGEBUILD-14842067
+RUN: /usr/share/launchpad-buildd/slavebin/in-target override-sources-list --backend=chroot --series=bionic --arch=amd64 PACKAGEBUILD-14842067 'deb http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu bionic main' 'deb http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu bionic main' 'deb http://ftpmaster.internal/ubuntu bionic main restricted universe multiverse' 'deb http://ftpmaster.internal/ubuntu bionic-security main restricted universe multiverse' 'deb http://ftpmaster.internal/ubuntu bionic-updates main restricted universe multiverse' 'deb http://ftpmaster.internal/ubuntu bionic-backports main restricted universe multiverse'
+Overriding sources.list in build-PACKAGEBUILD-14842067
+RUN: /usr/share/launchpad-buildd/slavebin/in-target add-trusted-keys --backend=chroot --series=bionic --arch=amd64 PACKAGEBUILD-14842067
+Adding trusted keys to build-PACKAGEBUILD-14842067
+Warning: apt-key output should not be parsed (stdout is not a terminal)
+OK
+Warning: apt-key output should not be parsed (stdout is not a terminal)
+/etc/apt/trusted.gpg
+--------------------
+pub   rsa1024 2010-11-14 [SC]
+      C9A7 585B 49D5 1698 710F  3A11 5E25 F516 B04C 661B
+uid           [ unknown] Launchpad PPA for marutter
+
+/etc/apt/trusted.gpg.d/ubuntu-keyring-2012-archive.gpg
+------------------------------------------------------
+pub   rsa4096 2012-05-11 [SC]
+      790B C727 7767 219C 42C8  6F93 3B4F E6AC C0B2 1F32
+uid           [ unknown] Ubuntu Archive Automatic Signing Key (2012) <ftpmaster@ubuntu.com>
+
+/etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg
+------------------------------------------------------
+pub   rsa4096 2012-05-11 [SC]
+      8439 38DF 228D 22F7 B374  2BC0 D94A A3F0 EFE2 1092
+uid           [ unknown] Ubuntu CD Image Automatic Signing Key (2012) <cdimage@ubuntu.com>
+
+RUN: /usr/share/launchpad-buildd/slavebin/in-target update-debian-chroot --backend=chroot --series=bionic --arch=amd64 PACKAGEBUILD-14842067
+Updating target for build PACKAGEBUILD-14842067
+Get:1 http://ftpmaster.internal/ubuntu bionic InRelease [242 kB]
+Get:2 http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu bionic InRelease [15.4 kB]
+Get:3 http://ftpmaster.internal/ubuntu bionic-security InRelease [69.9 kB]
+Get:4 http://ftpmaster.internal/ubuntu bionic-updates InRelease [65.4 kB]
+Get:5 http://ftpmaster.internal/ubuntu bionic-backports InRelease [65.5 kB]
+Get:6 http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu bionic InRelease [15.4 kB]
+Get:7 http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu bionic/main amd64 Packages [68.5 kB]
+Get:8 http://ppa.launchpad.net/marutter/c2d4u3.5/ubuntu bionic/main Translation-en [56.2 kB]
+Get:9 http://ftpmaster.internal/ubuntu bionic/main amd64 Packages [1019 kB]
+Get:10 http://ftpmaster.internal/ubuntu bionic/main Translation-en [516 kB]
+Get:11 http://ftpmaster.internal/ubuntu bionic/universe amd64 Packages [8570 kB]
+Get:12 http://ftpmaster.internal/ubuntu bionic/universe Translation-en [4941 kB]
+Get:13 http://ftpmaster.internal/ubuntu bionic/multiverse amd64 Packages [151 kB]
+Get:14 http://ftpmaster.internal/ubuntu bionic-security/main amd64 Packages [8512 B]
+Get:15 http://ftpmaster.internal/ubuntu bionic-security/main Translation-en [3352 B]
+Get:16 http://ftpmaster.internal/ubuntu bionic-security/universe amd64 Packages [2796 B]
+Get:17 http://ftpmaster.internal/ubuntu bionic-security/universe Translation-en [1936 B]
+Get:18 http://ftpmaster.internal/ubuntu bionic-updates/main amd64 Packages [8512 B]
+Get:19 http://ftpmaster.internal/ubuntu bionic-updates/main Translation-en [3352 B]
+Get:20 http://ftpmaster.internal/ubuntu bionic-updates/universe amd64 Packages [3544 B]
+Get:21 http://ftpmaster.internal/ubuntu bionic-updates/universe Translation-en [2292 B]
+Get:22 http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu bionic/main amd64 Packages [6508 B]
+Get:23 http://ppa.launchpad.net/marutter/rrutter3.5/ubuntu bionic/main Translation-en [5012 B]
+Fetched 15.8 MB in 5s (3385 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Calculating upgrade...
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+RUN: /usr/share/launchpad-buildd/slavebin/sbuild-package PACKAGEBUILD-14842067 amd64 bionic -c chroot:build-PACKAGEBUILD-14842067 --arch=amd64 --dist=bionic --nolog -A r-cran-conting_1.6-2ubuntu1.dsc
+Initiating build PACKAGEBUILD-14842067 with 4 jobs across 4 processor cores.
+Kernel reported to sbuild: 4.4.0-122-generic #146-Ubuntu SMP Mon Apr 23 15:34:04 UTC 2018 x86_64
+sbuild (Debian sbuild) 0.67.0 (26 Dec 2015) on lcy01-amd64-026.buildd
+
++==============================================================================+
+| r-cran-conting 1.6-2ubuntu1 (amd64)                        05 May 2018 19:18 |
++==============================================================================+
+
+Package: r-cran-conting
+Version: 1.6-2ubuntu1
+Source Version: 1.6-2ubuntu1
+Distribution: bionic
+Machine Architecture: amd64
+Host Architecture: amd64
+Build Architecture: amd64
+
+I: NOTICE: Log filtering will replace 'build/r-cran-conting-aPA1cc/r-cran-conting-1.6' with '<<PKGBUILDDIR>>'
+I: NOTICE: Log filtering will replace 'build/r-cran-conting-aPA1cc' with '<<BUILDDIR>>'
+I: NOTICE: Log filtering will replace 'home/buildd/build-PACKAGEBUILD-14842067/chroot-autobuild' with '<<CHROOT>>'
+
++------------------------------------------------------------------------------+
+| Fetch source files                                                           |
++------------------------------------------------------------------------------+
+
+
+Local sources
+-------------
+
+r-cran-conting_1.6-2ubuntu1.dsc exists in .; copying to chroot
+
+Check architectures
+-------------------
+
+
+Check dependencies
+------------------
+
+Merged Build-Depends: build-essential, fakeroot
+Filtered Build-Depends: build-essential, fakeroot
+dpkg-deb: building package 'sbuild-build-depends-core-dummy' in '/<<BUILDDIR>>/resolver-aPI2Ia/apt_archive/sbuild-build-depends-core-dummy.deb'.
+Ign:1 copy:/<<BUILDDIR>>/resolver-aPI2Ia/apt_archive ./ InRelease
+Get:2 copy:/<<BUILDDIR>>/resolver-aPI2Ia/apt_archive ./ Release [2119 B]
+Ign:3 copy:/<<BUILDDIR>>/resolver-aPI2Ia/apt_archive ./ Release.gpg
+Get:4 copy:/<<BUILDDIR>>/resolver-aPI2Ia/apt_archive ./ Sources [214 B]
+Get:5 copy:/<<BUILDDIR>>/resolver-aPI2Ia/apt_archive ./ Packages [529 B]
+Fetched 2862 B in 0s (73.0 kB/s)
+Reading package lists...
+Reading package lists...
+
++------------------------------------------------------------------------------+
+| Install core build dependencies (apt-based resolver)                         |
++------------------------------------------------------------------------------+
+
+Installing build dependencies
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  sbuild-build-depends-core-dummy
+0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.
+Need to get 852 B of archives.
+After this operation, 0 B of additional disk space will be used.
+Get:1 copy:/<<BUILDDIR>>/resolver-aPI2Ia/apt_archive ./ sbuild-build-depends-core-dummy 0.invalid.0 [852 B]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 852 B in 0s (0 B/s)
+Selecting previously unselected package sbuild-build-depends-core-dummy.
+(Reading database ... 12637 files and directories currently installed.)
+Preparing to unpack .../sbuild-build-depends-core-dummy_0.invalid.0_amd64.deb ...
+Unpacking sbuild-build-depends-core-dummy (0.invalid.0) ...
+Setting up sbuild-build-depends-core-dummy (0.invalid.0) ...
+Merged Build-Depends: debhelper (>= 10), dh-r, r-base-dev, r-cran-mvtnorm, r-cran-bms, r-cran-gtools, r-cran-tseries, r-cran-coda
+Filtered Build-Depends: debhelper (>= 10), dh-r, r-base-dev, r-cran-mvtnorm, r-cran-bms, r-cran-gtools, r-cran-tseries, r-cran-coda
+dpkg-deb: building package 'sbuild-build-depends-r-cran-conting-dummy' in '/<<BUILDDIR>>/resolver-0midkA/apt_archive/sbuild-build-depends-r-cran-conting-dummy.deb'.
+Ign:1 copy:/<<BUILDDIR>>/resolver-0midkA/apt_archive ./ InRelease
+Get:2 copy:/<<BUILDDIR>>/resolver-0midkA/apt_archive ./ Release [2119 B]
+Ign:3 copy:/<<BUILDDIR>>/resolver-0midkA/apt_archive ./ Release.gpg
+Get:4 copy:/<<BUILDDIR>>/resolver-0midkA/apt_archive ./ Sources [251 B]
+Get:5 copy:/<<BUILDDIR>>/resolver-0midkA/apt_archive ./ Packages [571 B]
+Fetched 2941 B in 0s (40.0 kB/s)
+Reading package lists...
+Reading package lists...
+
++------------------------------------------------------------------------------+
+| Install r-cran-conting build dependencies (apt-based resolver)               |
++------------------------------------------------------------------------------+
+
+Installing build dependencies
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ sbuild-build-depends-r-cran-conting-dummy : Depends: r-cran-bms but it is not going to be installed
+                                             Depends: r-cran-tseries but it is not going to be installed
+E: Unable to correct problems, you have held broken packages.
+apt-get failed.
+Package installation failed
+Reading package lists...
+Building dependency tree...
+Reading state information...
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be REMOVED:
+  sbuild-build-depends-core-dummy*
+0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.
+After this operation, 0 B of additional disk space will be used.
+(Reading database ... 12637 files and directories currently installed.)
+Removing sbuild-build-depends-core-dummy (0.invalid.0) ...
+
++------------------------------------------------------------------------------+
+| Cleanup                                                                      |
++------------------------------------------------------------------------------+
+
+Purging /<<BUILDDIR>>
+Not removing build depends: as requested
+E: Package build dependencies not satisfied; skipping
+
++------------------------------------------------------------------------------+
+| Summary                                                                      |
++------------------------------------------------------------------------------+
+
+Build Architecture: amd64
+Build-Space: 0
+Build-Time: 0
+Distribution: bionic
+Fail-Stage: install-deps
+Host Architecture: amd64
+Install-Time: 0
+Job: r-cran-conting_1.6-2ubuntu1.dsc
+Machine Architecture: amd64
+Package: r-cran-conting
+Package-Time: 0
+Source-Version: 1.6-2ubuntu1
+Space: 0
+Status: failed
+Version: 1.6-2ubuntu1
+--------------------------------------------------------------------------------
+Finished at 20180505-1918
+Build needed 00:00:00, 0k disc space
+E: Package build dependencies not satisfied; skipping
+RUN: /usr/share/launchpad-buildd/slavebin/in-target scan-for-processes --backend=chroot --series=bionic --arch=amd64 PACKAGEBUILD-14842067
+Scanning for processes to kill in build PACKAGEBUILD-14842067
+RUN: /usr/share/launchpad-buildd/slavebin/in-target umount-chroot --backend=chroot --series=bionic --arch=amd64 PACKAGEBUILD-14842067
+Stopping target for build PACKAGEBUILD-14842067
+RUN: /usr/share/launchpad-buildd/slavebin/in-target remove-build --backend=chroot --series=bionic --arch=amd64 PACKAGEBUILD-14842067
+Removing build PACKAGEBUILD-14842067

@@ -1,0 +1,19 @@
+ess (17.11-5) unstable; urgency=medium
+---------------------------------------
+
+After many years as standard package, 'ess' has (as of August 2018) been
+converted to be an ELPA-compatible package 'elpa-ess'.
+
+You may now need to add a manual
+
+   (require 'ess-site)
+
+to the top of your '.emacs' file as the package no longer supplies a
+common startup file. Alternatively, use
+
+   (package-initialize)
+
+to initialize this (and other) 'packages' (in the Emacs sense). We
+also added it to the autoloads file.
+
+ -- Dirk Eddelbuettel <edd@debian.org>, Fri, 24 Aug 2018 07:06:19 -0500

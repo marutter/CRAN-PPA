@@ -118,6 +118,7 @@ for i in ${dist}; do
 	    cd ${ChrootDir}/${i}${BuildDir}/
 	    p=`echo $p | sed 's/matrix/rmatrix/'` # non-standard name
 	    sudo dput ppa:marutter/rrutter ./*${p}*_source.changes
+#	    sudo dput ppa:marutter/rrutter3.5 ./*${p}*_source.changes
 	done
     else
 	echo "update-r-ppa.sh: build of one or more packages failed for ${i}"

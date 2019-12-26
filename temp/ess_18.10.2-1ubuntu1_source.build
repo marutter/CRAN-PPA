@@ -1,0 +1,78 @@
+ dpkg-buildpackage -rfakeroot -us -uc -ui -S -d -sa
+dpkg-buildpackage: info: source package ess
+dpkg-buildpackage: info: source version 18.10.2-1ubuntu1
+dpkg-buildpackage: info: source distribution UNRELEASED
+dpkg-buildpackage: info: source changed by Michael Rutter <marutter@gmail.com>
+ dpkg-source --before-build ess-18.10.2
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+chmod -R u+w *
+rm -f build-stamp install-stamp doc/*.info*
+[ ! -f Makefile ] || /usr/bin/make clean
+make[1]: Entering directory '/mnt/Personal/mrutter/R/PPA/temp/ess-18.10.2'
+** Cleaning up **
+rm -f ess-18.10.2/etc/.IS.RELEASE ess-18.10.2/etc/git-ref
+(if [ -d ess-18.10.2 ] ; then \
+  chmod -R u+w ess-18.10.2 ess-18.10.2-git && rm -rf ess-18.10.2 ess-18.10.2-git; fi)
+cd etc; /usr/bin/make clean
+make[2]: Entering directory '/mnt/Personal/mrutter/R/PPA/temp/ess-18.10.2/etc'
+rm -rf SVN-REVISION
+make[2]: Leaving directory '/mnt/Personal/mrutter/R/PPA/temp/ess-18.10.2/etc'
+cd lisp; /usr/bin/make clean
+make[2]: Entering directory '/mnt/Personal/mrutter/R/PPA/temp/ess-18.10.2/lisp'
+rm -f ess-julia.elc ess-trns.elc ess-r-a.elc ess-stata-lang.elc ess-xls-d.elc ess-rdired.elc ess-r-mode.elc ess-inf.elc ess-r-package.elc ess-noweb-font-lock-mode.elc ess-dde.elc ess-bugs-d.elc ess.elc ess-sp5-d.elc ess-site.elc ess-noweb.elc ess-r-syntax.elc ess-mode.elc ess-stata-mode.elc ess-help.elc ess-s3-d.elc ess-s4-d.elc ess-noweb-mode.elc ess-tracebug.elc ess-jags-d.elc ess-custom.elc ess-r-completion.elc ess-sas-l.elc ess-rd.elc ess-lsp-l.elc ess-sp3-d.elc ess-utils.elc ess-mouse.elc mouseme.elc ess-sp6w-d.elc make-regexp.elc julia-mode.elc ess-s-lang.elc ess-arc-d.elc ess-roxy.elc ess-sp6-d.elc essd-els.elc ess-r-gui.elc ess-r-flymake.elc ess-omg-l.elc ess-gretl.elc ess-sp4-d.elc ess-omg-d.elc ess-generics.elc ess-swv.elc ess-sas-d.elc ess-bugs-l.elc ess-rutils.elc ess-sas-a.elc ess-toolbar.elc ess-font-lock.elc ess-vst-d.elc ess-r-xref.elc obsolete/ess-eldoc.elc obsolete/msdos.elc obsolete/ess-r-args.elc
+rm -f ess-autoloads.el
+make[2]: Leaving directory '/mnt/Personal/mrutter/R/PPA/temp/ess-18.10.2/lisp'
+cd doc; /usr/bin/make clean
+make[2]: Entering directory '/mnt/Personal/mrutter/R/PPA/temp/ess-18.10.2/doc'
+make[2]: Leaving directory '/mnt/Personal/mrutter/R/PPA/temp/ess-18.10.2/doc'
+make[1]: Leaving directory '/mnt/Personal/mrutter/R/PPA/temp/ess-18.10.2'
+rm -f doc/*.dvi #README ANNOUNCE doc/html/readme.html doc/html/ess.html
+rm -f doc/refcard/refcard.log doc/refcard/refcard.aux
+rm -f lisp/ess-pkg.el
+dh_clean
+ dpkg-source -b ess-18.10.2
+dpkg-source: warning: Version number suggests Ubuntu changes, but Maintainer: does not have Ubuntu address
+dpkg-source: warning: Version number suggests Ubuntu changes, but there is no XSBC-Original-Maintainer field
+dpkg-source: info: using source format '3.0 (quilt)'
+dpkg-source: info: building ess using existing ./ess_18.10.2.orig.tar.gz
+dpkg-source: warning: ignoring deletion of file ANNOUNCE, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file ONEWS, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file README, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file NEWS, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/readme.aux, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.fns, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.vr, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.cps, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.vrs, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.pdf, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/readme.pdf, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.fn, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/readme.cp, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/readme.cps, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.aux, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.ky, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.kys, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.toc, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.cp, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/readme.log, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/ess.log, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/readme.toc, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/info/ess.info, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/refcard/refcard.log, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/refcard/refcard.pdf, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/refcard/refcard.aux, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/html/news.html, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/html/ess.html, use --include-removal to override
+dpkg-source: warning: ignoring deletion of file doc/html/readme.html, use --include-removal to override
+dpkg-source: info: building ess in ess_18.10.2-1ubuntu1.debian.tar.xz
+dpkg-source: info: building ess in ess_18.10.2-1ubuntu1.dsc
+ dpkg-genbuildinfo --build=source
+ dpkg-genchanges -sa --build=source >../ess_18.10.2-1ubuntu1_source.changes
+dpkg-genchanges: info: including full source code in upload
+ dpkg-source --after-build ess-18.10.2
+dpkg-buildpackage: info: full upload (original source is included)
+Now running lintian ess_18.10.2-1ubuntu1_source.changes ...
+E: ess source: missing-build-dependency-for-dh_-command dh_elpa => dh-elpa
+Finished running lintian.

@@ -1,0 +1,195 @@
+@node ESS(R)--Editing files, iESS(R)--Inferior ESS processes, ESS for R, ESS for R
+@comment  node-name,  next,  previous,  up -- don't use @ESS ..
+@section ESS[R]--Editing files
+
+@ESS{[R]} mode should be automatically turned on when visiting a file
+ending with an R or S suffix (*.R, *.S, *.s, etc), which enables the
+features discussed previously.  Alternatively, type @kbd{M-x R-mode} to
+put the current buffer into R mode.  However, one will have to start up
+an inferior process to take advantage of the interactive features.
+
+@node iESS(R)--Inferior ESS processes, Philosophies for using ESS(R), ESS(R)--Editing files, ESS for R
+@comment  node-name,  next,  previous,  up
+@section iESS[R]--Inferior ESS processes
+
+To start up iESS mode for R, use:
+@example
+   M-x R
+   M-x S+3
+   M-x S4
+   M-x S+5
+   M-x S+6
+@end example
+
+@noindent
+(for R, S-PLUS 3.x, S4, S+5, S+6 or or S+7, respectively.  This assumes that
+you have access to each).
+
+@cindex command line arguments
+In the case that you wish to pass command line arguments to the starting
+R process, call it with the universal prefix. To set command line
+arguments that apply to all future iESS sessions, set the variable
+@code{inferior-R-args}.
+
+Note that R has some extremely useful command line arguments.  For
+example, @code{--vanilla} will ensure R starts up without loading in any init
+files.
+
+If you have other versions of R or S available on the system, ESS
+is also able to start those versions.  How this exactly works depend on
+which OS you are using (details below).  The
+general principle, regardless of OS, is that ESS searches the paths
+listed in the variable @code{exec-path} for R binaries.  If ESS cannot
+find your R binaries, on Unix you can change the unix environment
+variable @code{PATH}, as this variable is used to set @code{exec-path}.
+
+R on GNU/Linux systems and other Unix-like systems (macOS): If you have
+"R-1.8.1" on your @code{exec-path}, it can be started using @kbd{M-x
+R-1.8.1}.  By default, ESS will find versions of R beginning ``R-1'',
+``R-2'', ``R-3'', ``R-devel'', or ``R-patched''.  If your versions of R
+are called other names, consider renaming them with a symbolic link or
+change the variable @code{ess-r-versions}.  To see which functions have
+been created for starting different versions of R, type @kbd{M-x R-} and
+then hit [Tab].  These other versions of R can also be started from the
+"ESS->Start Process->Other" menu.
+
+R on Windows systems: If you have "rw1081" on your @code{exec-path}, it
+can be started using @kbd{M-x rw1081}.  By default, ESS will find
+versions of R located in directories parallel to the version of R in
+your @code{PATH}.  If your versions of R are called other names, you
+will need to change the variable @code{ess-rterm-versions}.  To see
+which functions have been created for starting different versions of R,
+type @kbd{M-x rw} and then hit [Tab].  These other versions of
+R can also be started from the "ESS->Start Process->Other" menu.
+
+Once ESS has found these extra versions of R, it will then create a new
+function, called @kbd{M-x R-newest}, which will call the newest version
+of R that it found.  (ESS examines the date in the first line of
+information from @code{R --version} to determine which is newest.)
+
+S on Unix systems: If you have "Splus7" on your @code{exec-path}, it can
+be started using @kbd{M-x Splus7}.  By default, ESS will find all
+executables beginning "Splus" on your path.  If your versions of S are
+called other names, consider renaming them with a symbolic link or
+change the variable @code{ess-s-versions}.  To see which functions have
+been created for starting different versions of Splus, type @kbd{M-x
+Splus} and then hit [Tab].  These other versions of Splus can also be
+started from the "ESS->Start Process->Other" menu.
+
+A second mechanism is also available for running other versions of Splus.
+The variable @code{ess-s-versions-list} is a list of lists; each sublist
+should be of the form: (DEFUN-NAME PATH ARGS).  DEFUN-NAME is the name
+of the new emacs function you wish to create to start the new S process;
+PATH is the full path to the version of S you want to run; ARGS is an
+optional string of command-line arguments to pass to the S process.
+Here is an example setting:
+@example
+(setq ess-s-versions-list
+      '( ("Splus64" "/usr/local/bin/Splus64")
+         ("Splus64-j" "/usr/local/bin/Splus64" "-j")))
+@end example
+which will then allow you to do @kbd{M-x Splus64-j} to start  Splus64
+with the corresponding command line arguments.
+
+If you change the value of either @code{ess-r-versions} or
+@code{ess-s-versions-list}, you should put them in your Emacs
+configuration file before ess-site is loaded, since the new Emacs
+functions are created when ESS is loaded.
+
+Sqpe (S-Plus running inside an Emacs buffer) on Windows systems: If you
+have an older version of S-Plus (S-Plus 6.1 for example) on your system,
+ir can be started inside an Emacs buffer with @kbd{M-x splus61}.  By
+default, ESS will find versions of S-Plus located in the installation
+directories that Insightful uses by default.  If your versions of S-Plus
+are anywhere else, you will need to change the variable
+@code{ess-SHOME-versions}.  To see which functions have been created for
+starting different versions of S-Plus, type @kbd{M-x spl} and then hit
+[Tab].  These other versions of S-Plus can also be started from the
+"ESS->Start Process->Other" menu.
+
+
+@node Philosophies for using ESS(R), Example ESS usage, iESS(R)--Inferior ESS processes, ESS for R
+@comment  node-name,  next,  previous,  up
+@section Philosophies for using ESS[R]
+
+There are two philosophies for using ESS.  Most modern best practices
+prefer the first.  ESS is configured for the first, and this is what the
+manual focuses on.
+
+1: The source code is real.  Objects are realizations of the source
+   code.  Source for EVERY user modified object is placed in a
+   particular directory or directories, for later editing and retrieval.
+
+2: R objects are real.  Source code is a temporary realization of the
+   objects.  Dumped buffers should not be saved.
+   _We_strongly_discourage_this_approach_.  However, if you insist, add
+   the following lines to your Emacs configuration file:
+@example
+(setq ess-keep-dump-files nil)
+(setq ess-delete-dump-files t)
+(setq ess-mode-silently-save nil)
+@end example
+
+@node Example ESS usage, , Philosophies for using ESS(R), ESS for R
+@section Example ESS usage
+
+We present some basic examples for using ESS to interact with R
+These are just a subset of approaches, many better approaches are
+possible.  Contributions of examples of how you work with ESS are
+appreciated (especially since it helps us determine priorities on
+future enhancements)! Comments as to what should be happening are
+prefixed by "##".
+@display
+1:  ## Data Analysis Example
+    ## Load the file you want to work with
+    C-x C-f myfile.R
+
+    ## Edit as appropriate, then start and switch to an R buffer
+    C-c C-z
+
+    ## A new buffer *R* will appear. R will have been started
+    ## in this buffer.  The buffer is in iESS [R] mode.
+
+    ## Return to the script (prefix with C-c if you have pressed other keys)
+    C-z
+
+    ## Send regions, lines, or the entire file contents to R.  For regions,
+    ## highlight a region with keystrokes or mouse and then send with:
+    C-c C-r
+
+    ## Re-edit myfile.R as necessary to correct any difficulties.  Add
+    ## new commands here.  Send them to R by region with C-c C-r, or
+    ## one line at a time with C-c C-n.
+
+    ## Save the revised myfile.R with C-x C-s.
+
+    ## Save the entire *R* interaction buffer with C-c C-s.  You
+    ## will be prompted for a file name.  The recommended name is
+    ## myfile.Rout.  With this suffix, the file will come up in ESS
+    ## Transcript mode the next time it is accessed from Emacs.
+
+
+
+2:  ## Program revision example (source code is real)
+
+    ## Start R in a process buffer (this will be *R*)
+    M-x R
+
+    ## Load the file you want to work with
+    C-x C-f myfile.R
+
+    ## edit program, functions, and code in myfile.R, and send revised
+    ## functions to R when ready with
+    C-c C-f
+    ## or highlighted regions with
+    C-c C-r
+    ## or individual lines with
+    C-c C-n
+    ## or load the entire buffer with
+    C-c M-l
+
+    ## save the revised myfile.R when you have finished
+    C-c C-s
+
+@end display
+

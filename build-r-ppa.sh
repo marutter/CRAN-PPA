@@ -69,7 +69,7 @@ echo $packages
 apt-get update
 for i in ${packages}; do
     rm -rf *${i/rmatrix/matrix}*
-      apt-get source --only-source $i/unstable
+      apt-get source --only-source --allow-unauthenticated $i/unstable
 ##    apt-get source $i
     cd $i-*
 	
@@ -81,7 +81,6 @@ for i in ${packages}; do
     then
       version=${version/-/.}
     fi
-	
 	
 	if [ ${i} == "rpy" ]
 	then
@@ -96,34 +95,59 @@ for i in ${packages}; do
 		dch -a "debian/control, debian/rules, debian/compat: revert to a version of python-all-dev < 2.6.6-3"
 
 	fi
+	
+	if [ ${i} == "ess" ]
+	then
+		sed -i '/^Depends/s/emacsen-common (>= 2.0.8)/emacsen-common/' debian/control
+		dch -a "debian/control, revert to a version of emacsen-common that is available"
+	fi
+	
+	if [ ${i} == "jags" ]
+	then
+		sed -i '/^Build-Depends/s/gfortran (>= 4:5.2)/gfortran/' debian/control
+		dch -a "debian/control, revert to a version of gfortran that is available"
+		sed -i '/^Build-Depends/s/g++ (>= 4:5.2)/g++/' debian/control
+		dch -a "debian/control, revert to a version of g++ that is available"
+		line_old='#(cd doc/manual \&\& make docs)'
+		line_new='(cd doc/manual \&\& make docs)'
+		sed -i "s%$line_old%$line_new%g" debian/rules
+	fi	
+	
+	if [[ ${DISTRIB_CODENAME} == "trusty" && ${i} == "rpy" ]]
+	then
+		sed -i '/^Build-Depends/s/texlive-latex-recommended/texlive-latex-recommended, texlive-fonts-recommended, texlive-latex-extra/' debian/control
+		dch -a "debian/control: For trusty, add a some latex files that are needed (texlive-fonts-recommended, texlive-latex-extra)"
+
+	fi
+	
 	if [ ${i} == "rpy2" ]
 	then
 		sed -i '/^Build-Depends/s/python-all-dev (>= 2.6.6-3)/python-all-dev/' debian/control
 		dch -a "debian/control, debian/rules, debian/compat: revert to a version of python-all-dev < 2.6.6-3"
 	fi
-	if [[ ${DISTRIB_CODENAME} == "lucid" &&${i} == "rpy2" ]]
-	then
-		sed -i 's/dh_python2/dh_pysupport/g' debian/rules
-		dch -a "debian/rules: Convert dh_pyhton2 to dh_pysupport"
-	fi
-	if [[ ${DISTRIB_CODENAME} == "karmic" && ${i} == "jags" ]]
-	then
-		sed -i '/^Build-Depends/s/libltdl-dev (>= 2.2.6b)/libltdl-dev/' debian/control
-		dch -a "debian/control, debian/rules, debian/compat: revert to a version of libltdl-dev < 2.2.6b"
-	fi
-	if [[ ${DISTRIB_CODENAME} == "hardy" && ${i} == "jags" ]]
-	then
-		sed -i '/^Build-Depends/s/libltdl-dev (>= 2.2.6b)/libltdl3-dev/' debian/control
-		dch -a "debian/control, debian/rules, debian/compat: revert to a version of libltdl3-dev"
-		sed -i '/^Build-Depends/s/debhelper (>= 7.0.50~)/debhelper/' debian/control
-		dch -a "debian/control, debian/rules, debian/compat: revert to a version of debheler < 7.0.0"
-	fi
-    if [[ ${DISTRIB_CODENAME} < "karmic" ]]
-        then
-        sed -i '/^Depends/s/dpkg (>= 1.15.4) | install-info/dpkg | install-info/' debian/control
-        dch -a "debian/control: revert Depends: to 'dpkg | install-info' since ${DISTRIB_DESCRIPTION} has a version of dpkg < 1.15.4 and no separate package i\
-nstall-info"
-    fi
+	#if [[ ${DISTRIB_CODENAME} == "lucid" && ${i} == "rpy2" ]]
+	#then
+		#sed -i 's/dh_python2/dh_pysupport/g' debian/rules
+		#dch -a "debian/rules: Convert dh_pyhton2 to dh_pysupport"
+	#fi
+	#if [[ ${DISTRIB_CODENAME} == "karmic" && ${i} == "jags" ]]
+	#then
+		#sed -i '/^Build-Depends/s/libltdl-dev (>= 2.2.6b)/libltdl-dev/' debian/control
+		#dch -a "debian/control, debian/rules, debian/compat: revert to a version of libltdl-dev < 2.2.6b"
+	#fi
+	#if [[ ${DISTRIB_CODENAME} == "hardy" && ${i} == "jags" ]]
+	#then
+		#sed -i '/^Build-Depends/s/libltdl-dev (>= 2.2.6b)/libltdl3-dev/' debian/control
+		#dch -a "debian/control, debian/rules, debian/compat: revert to a version of libltdl3-dev"
+		#sed -i '/^Build-Depends/s/debhelper (>= 7.0.50~)/debhelper/' debian/control
+		#dch -a "debian/control, debian/rules, debian/compat: revert to a version of debheler < 7.0.0"
+	#fi
+    #if [[ ${DISTRIB_CODENAME} < "karmic" ]]
+        #then
+        #sed -i '/^Depends/s/dpkg (>= 1.15.4) | install-info/dpkg | install-info/' debian/control
+        #dch -a "debian/control: revert Depends: to 'dpkg | install-info' since ${DISTRIB_DESCRIPTION} has a version of dpkg < 1.15.4 and no separate package i\
+#nstall-info"
+    #fi
 	if [ ${i} == "rjava" ]
 	then
 		cd debian
@@ -132,17 +156,12 @@ nstall-info"
         cd ..
 		dch -a "postinst: Added post install script to reconfigure java in R"
 	fi
-	if [ ${DISTRIB_CODENAME} == "lucid" && ${i} == "rjava" ]
-	then
-		sed -i '/^Build-Depends/s/libgcj12-dev/libgcj10-dev/' debian/control
-		dch -a "Adjust libgcj from 12 to 10 for lucid"
-	fi
 	
 #    dpkg-checkbuilddeps
     if [ $? -ne 0 ]; then
 	exit 1
     fi
-    debuild --no-tgz-check -S -sa
+    debuild -S -sa
 #    debuild -S -us -uc
 #    dpkg-buildpackage -tc -uc -us
     if [ $? -ne 0 ]; then
