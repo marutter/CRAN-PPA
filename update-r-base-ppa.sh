@@ -3,7 +3,7 @@
 # Script to automate build of r base source packages for all supported Ubuntu
 # releases to a launchpad ppa
 
-# Author: Michael Rutter <marutter@gmail.com> based on scripts from 
+# Author: Michael Rutter <marutter@gmail.com> based on scripts from
 #         Vincent Goulet <vincent.goulet@act.ulaval.ca> and
 #         Johannes Ranke <jranke@uni-bremen.de>
 
@@ -20,8 +20,8 @@ Build r-base packages for each chroot jail specified in 'releases'.
 Options:
   -h, --help		print short help message and exit
   -n, --number		release number of the package (default 0)
-  -r, --releases        list of chroots for which to build packages; 
-                        defaults to the value of the environment variable 
+  -r, --releases        list of chroots for which to build packages;
+                        defaults to the value of the environment variable
                         CRANRELEASE
 
 The file .CRANenviron is sourced to possibly define the environment
@@ -45,6 +45,9 @@ fi
 
 # No arguments given. Use default arguments of, if the list of
 # releases is empty, print usage information.
+
+number=0
+
 if [ $# -eq 0 ]
 then
     number=0
@@ -60,7 +63,7 @@ fi
 while test -n "${1}"; do
     case ${1} in
 	-h|--help)
-	    echo "${usage}"; exit 0 
+	    echo "${usage}"; exit 0
 	    ;;
 	-n|--number)
 	    shift
@@ -70,7 +73,7 @@ while test -n "${1}"; do
 	    dist=""
 	    ;;
 	*)
-	    dist=${dist}"${1} " 
+	    dist=${dist}"${1} "
 	 ;;
     esac
     shift
@@ -95,7 +98,7 @@ for i in ${dist}; do
     if [ $? -eq 0 ]; then
 	echo "update-r-base.sh: build successful for ${i}, updating ppa"
 	cd ${ChrootDir}/${i}${BuildDir}/
-	sudo dput ppa:marutter/rrutter3.5 ./*r-base*_source.changes
+	sudo dput ppa:marutter/rrutter4.0 ./*r-base*_source.changes
     else
 	echo "update-r-ppa.sh: build of one or more packages failed for ${i}"
 	exit 1
