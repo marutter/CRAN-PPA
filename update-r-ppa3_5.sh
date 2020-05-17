@@ -34,6 +34,8 @@ The file .CRANenviron is sourced to possibly define the environment
 variables CRANRELEASE and CRANPACKAGES.
 "
 
+
+
 if [ -e ${ScriptDir}/.CRANenviron ]
 then
     . ${ScriptDir}/.CRANenviron
@@ -105,6 +107,19 @@ then
 	exit 1
     fi
 fi
+
+# Check to see if package is not comptable with R 4.0
+
+for p in ${packages}; do
+  if [[ "$p" == "rodbc" ]]; then
+    echo "rodbc not comptable with R < 4.0"
+    exit 1
+  fi
+  if [[ "$p" == "foreign" ]]; then
+    echo "foreign not comptable with R < 4.0"
+    exit 1
+  fi
+done
 
 echo "Building package(s): ${packages}"
 echo "Ubuntu release(s): ${dist}"
